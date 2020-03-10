@@ -1,9 +1,7 @@
-function set_option_for_cases_in_uk(types, dates, values) {
-
-    // specify chart configuration item and data
+function common_option(types, dates) {
     option = {
         title: {
-            text: 'total no.'
+            text: ''
         },
         tooltip: {
             trigger: 'axis',
@@ -16,16 +14,14 @@ function set_option_for_cases_in_uk(types, dates, values) {
         },
         legend: {
             data: types,
-            //['tested', 'negative', 'positive in UK', 'positive in England']
-            selected: {
-                'tested': false,
-                'negative': false,
-            }
+            type: 'scroll',
+            orient: 'horizontal'
         },
         toolbox: {
             feature: {
                 saveAsImage: {}
-            }
+            },
+            bottom: 0
         },
         grid: {
             left: '3%',
@@ -43,6 +39,17 @@ function set_option_for_cases_in_uk(types, dates, values) {
         }],
         series: []
     };
+
+    return option;
+}
+
+function set_option_for_cases_in_uk(types, dates, values) {
+    // specify chart configuration item and data
+    option = common_option(types, dates);
+    option['legend']['selected'] = {
+        'tested': false,
+        'negative': false,
+    }
 
     for (var i = 0; i < types.length; i++) {
         option['series'].push({
@@ -63,7 +70,6 @@ function set_option_for_cases_in_uk(types, dates, values) {
 }
 
 function set_option_for_cases_increase_in_uk(dates, values) {
-
     types = ['increase in UK', 'increase in England'];
     values = values.slice(2);
     for (var i = 0; i < values.length; i++) {
@@ -75,101 +81,26 @@ function set_option_for_cases_increase_in_uk(dates, values) {
         }
     }
     // specify chart configuration item and data
-    option = {
-        title: {
-            text: 'increase no.'
-        },
-        tooltip: {
-            trigger: 'axis'
-        },
-        legend: {
-            data: types
-        },
-        toolbox: {
-            feature: {
-                saveAsImage: {}
-            }
-        },
-        grid: {
-            left: '3%',
-            right: '4%',
-            bottom: '3%',
-            containLabel: true
-        },
-        xAxis: [{
-            type: 'category',
-            boundaryGap: false,
-            data: dates // time
-        }],
-        yAxis: [{
-            type: 'value'
-        }],
-        series: [{
-            name: types[0],
+    option = common_option(types, dates);
+
+    for (var i = 0; i < types.length; i++) {
+        option['series'].push({
+            name: types[i],
             type: 'line',
             stack: false,
-            label: {
-                normal: {
-                    show: true,
-                    position: 'top'
-                }
-            },
-            data: values[0]
-        }, {
-            name: types[1],
-            type: 'line',
-            stack: false,
-            data: values[1]
-        }]
-    };
+            data: values[i]
+        });
+    }
 
     return option;
 }
 
 function set_option_for_cases_in_england(types, dates, values) {
-
     // specify chart configuration item and data
-    option = {
-        title: {
-            text: 'total no. (overlay)'
-        },
-        tooltip: {
-            trigger: 'axis',
-            axisPointer: {
-                type: 'cross',
-                label: {
-                    backgroundColor: '#6a7985'
-                }
-            }
-        },
-        legend: {
-            data: types,
-            left: 180,
-            selected: {
-                'Total': false,
-            }
-        },
-        toolbox: {
-            feature: {
-                saveAsImage: {}
-            }
-        },
-        grid: {
-            left: '3%',
-            right: '4%',
-            bottom: '3%',
-            containLabel: true
-        },
-        xAxis: [{
-            type: 'category',
-            boundaryGap: false,
-            data: dates // time
-        }],
-        yAxis: [{
-            type: 'value'
-        }],
-        series: []
-    };
+    option = common_option(types, dates);
+    option['legend']['selected'] = {
+        'Total': false,
+    }
 
     for (var i = 0; i < types.length; i++) {
         option['series'].push({
@@ -192,7 +123,6 @@ function set_option_for_cases_in_england(types, dates, values) {
 }
 
 function set_option_for_cases_increase_in_england(types, dates, values) {
-
     for (var i = 0; i < values.length; i++) {
         for (var j = values[i].length - 1; j >= 0; j--) {
             if (0 == j)
@@ -202,38 +132,7 @@ function set_option_for_cases_increase_in_england(types, dates, values) {
         }
     }
     // specify chart configuration item and data
-    option = {
-        title: {
-            text: 'increase no.'
-        },
-        tooltip: {
-            trigger: 'axis'
-        },
-        legend: {
-            data: types,
-            left: 150
-        },
-        toolbox: {
-            feature: {
-                saveAsImage: {}
-            }
-        },
-        grid: {
-            left: '3%',
-            right: '4%',
-            bottom: '3%',
-            containLabel: true
-        },
-        xAxis: [{
-            type: 'category',
-            boundaryGap: false,
-            data: dates // time
-        }],
-        yAxis: [{
-            type: 'value'
-        }],
-        series: []
-    };
+    option = common_option(types, dates);
 
     for (var i = 0; i < types.length; i++) {
         option['series'].push({
@@ -246,8 +145,7 @@ function set_option_for_cases_increase_in_england(types, dates, values) {
 
     return option;
 }
-;
-var cases_in_uk = echarts.init(document.getElementById('cases-in-uk'));
+;var cases_in_uk = echarts.init(document.getElementById('cases-in-uk'));
 cases_in_uk.showLoading();
 
 var cases_increase_in_uk = echarts.init(document.getElementById('cases-increase-in-uk'));
