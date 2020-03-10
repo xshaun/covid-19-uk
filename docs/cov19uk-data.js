@@ -14,8 +14,9 @@ function common_option(types, dates) {
         },
         legend: {
             data: types,
-            type: 'scroll',
-            orient: 'horizontal'
+            top:1
+//            type: 'scroll',
+//            orient: 'horizontal'
         },
         toolbox: {
             feature: {
@@ -26,7 +27,7 @@ function common_option(types, dates) {
         grid: {
             left: '3%',
             right: '4%',
-            bottom: '3%',
+            bottom: '5%',
             containLabel: true
         },
         xAxis: [{
@@ -119,6 +120,7 @@ function set_option_for_cases_in_england(types, dates, values) {
             position: 'top'
         }
     };
+
     return option;
 }
 
@@ -206,10 +208,14 @@ $.get('https://raw.githubusercontent.com/xshaun/covid-19-uk/master/cases-identif
     //[[...tested...], [...negative...], [...positive in UK...], [...positive in England...] ]
 
     var option_for_cases_in_england = set_option_for_cases_in_england(types, dates, values);
+    if(cases_in_england.getWidth() < 500)
+        option_for_cases_in_england['grid']['top'] = 100;
     cases_in_england.hideLoading();
     cases_in_england.setOption(option_for_cases_in_england);
 
     var option_for_cases_increase_in_england = set_option_for_cases_increase_in_england(types, dates, values);
+    if(cases_increase_in_england.getWidth() < 500)
+            option_for_cases_increase_in_england['grid']['top'] = 100;
     cases_increase_in_england.hideLoading();
     cases_increase_in_england.setOption(option_for_cases_increase_in_england);
 });
