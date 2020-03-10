@@ -5,22 +5,18 @@ cases_in_uk.showLoading();
 
 function set_option_for_cases_in_uk(csv_data) {
 
-    var types = csv_data[0].slice(1);
     // ["date", "tested", "negative", "positive in UK", "positive in England"] -> ["tested", "negative", "positive in UK", "positive in England"]
+    var types = csv_data[0].slice(1);
     var values = [];
-
     for (var i = 1; i < csv_data.length; i++) {
         for (var j = 0; j < csv_data[0].length; j++) {
             if (1 == i)
                 values[j] = [];
-            values[j][i] = csv_data[i][j];
+            values[j][i - 1] = csv_data[i][j];
         }
     }
     var dates = values[0];
     values = values.slice(1);
-
-    console.log(types);
-    console.log(values[1]);
 
     // specify chart configuration item and data
     option = {
@@ -37,7 +33,12 @@ function set_option_for_cases_in_uk(csv_data) {
             }
         },
         legend: {
-            data: types //['tested', 'negative', 'positive in UK', 'positive in England']
+            data: types,
+            //['tested', 'negative', 'positive in UK', 'positive in England']
+            selected: {
+                'tested': false,
+                'negative': false,
+            }
         },
         toolbox: {
             feature: {
@@ -61,31 +62,32 @@ function set_option_for_cases_in_uk(csv_data) {
         series: [{
             name: types[0],
             type: 'line',
-            stack: '',
+            stack: false,
             areaStyle: {},
             data: values[0]
         }, {
             name: types[1],
             type: 'line',
-            stack: '',
+            stack: false,
             areaStyle: {},
             data: values[1]
         }, {
             name: types[2],
             type: 'line',
-            stack: '',
-            areaStyle: {},
-            data: values[2]
-        }, {
-            name: types[3],
-            type: 'line',
-
+            stack: false,
             label: {
                 normal: {
                     show: true,
                     position: 'top'
                 }
             },
+            areaStyle: {},
+            data: values[2]
+        }, {
+            name: types[3],
+            type: 'line',
+            stack: false,
+
             areaStyle: {},
             data: values[3]
         }]
