@@ -1,5 +1,6 @@
-﻿date,tested,negative,positive in UK,positive in England
-9am on 6 March 2020, 20338, 20175,163,147
-7am on 7 March 2020, 21460, 21254,206,184
-9am on 8 March 2020, 23513, 23240,273,244
-9am on 9 March 2020, 24960, 24641,319,280
+﻿date,tested,negative,positive in UK,positive in England,died
+9am on 6 March 2020, 20338, 20175,163,147,-
+7am on 7 March 2020, 21460, 21254,206,184,-
+9am on 8 March 2020, 23513, 23240,273,244,-
+9am on 9 March 2020, 24960, 24641,319,280,-
+9am on 10 March 2020, 26261, 25888,373,324,6
