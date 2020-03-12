@@ -105,7 +105,7 @@ function _init(types, dates, t='') {
 }
 
 function set_option_for_total_cases_in_uk(types, dates, values) {
-    option = _init(types, dates, 'total cases in UK');
+    option = _init(types, dates, 'Total Cases in UK');
 
     option['legend']['selected'] = {
         'UKTested': false,
@@ -134,7 +134,7 @@ function set_option_for_total_cases_in_uk(types, dates, values) {
 }
 
 function set_option_for_total_cases_in_countries(types, dates, values) {
-    option = _init(types, dates, 'total cases in each country');
+    option = _init(types, dates, 'Total Cases in Countries');
 
     for (var i = 0; i < types.length; i++) {
         option['series'].push({
@@ -150,7 +150,7 @@ function set_option_for_total_cases_in_countries(types, dates, values) {
 
 function set_option_for_total_cases_in_england(types, dates, values) {
     // specify chart configuration item and data
-    option = _init(types, dates, 'total cases in England');
+    option = _init(types, dates, 'NHS in England');
     option['legend']['selected'] = {
         'Total': false,
         //@todo. hard code
@@ -178,7 +178,7 @@ function set_option_for_total_cases_in_england(types, dates, values) {
 
 function set_option_for_local_cases_in_england(types, dates, values) {
     // specify chart configuration item and data
-    option = _init(types, dates, 'local cases in England');
+    option = _init(types, dates, 'UTLA in England');
     option['grid']['top'] = '60%';
     option['legend']['top'] = '3%';
     //    grid: {
@@ -441,13 +441,13 @@ $.get('https://raw.githubusercontent.com/xshaun/covid-19-uk/master/number-of-cas
     figures['total-cases-in-uk'].setOption(set_option_for_total_cases_in_uk(types.slice(0, 4), v[0]/* date */
     , v.slice(1, 5)), theme);
     figures['total-cases-in-uk'].hideLoading();
-    figures['daily-cases-in-uk'].setOption(set_option_for_daily_cases(types.slice(0, 4), v[0], v.slice(1, 5), 'daily cases in UK'), theme);
+    figures['daily-cases-in-uk'].setOption(set_option_for_daily_cases(types.slice(0, 4), v[0], v.slice(1, 5), 'Daily Cases in UK'), theme);
     figures['daily-cases-in-uk'].hideLoading();
 
     // Countries
     figures['total-cases-in-countries'].setOption(set_option_for_total_cases_in_countries(types.slice(4, 8), v[0], v.slice(5, 9)), theme);
     figures['total-cases-in-countries'].hideLoading();
-    figures['daily-cases-in-countries'].setOption(set_option_for_daily_cases(types.slice(4, 8), v[0], v.slice(5, 9), 'daily cases in each country'));
+    figures['daily-cases-in-countries'].setOption(set_option_for_daily_cases(types.slice(4, 8), v[0], v.slice(5, 9), 'Daily Cases in Countries'));
     figures['daily-cases-in-countries'].hideLoading();
 });
 
