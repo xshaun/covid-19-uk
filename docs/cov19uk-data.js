@@ -418,7 +418,7 @@ $.get('https://raw.githubusercontent.com/xshaun/covid-19-uk/master/number-of-cas
     var types = t[0].slice(1);
 
     // Update
-
+    _idv('t', _t(v[0]));
     _idv('dc-nt-uk', _t(v[3]) - _t(v[3], -2));
     _idv('tc-nt-uk', _t(v[3]));
     _idv('tr-nt-uk', '---');
@@ -449,7 +449,6 @@ $.get('https://raw.githubusercontent.com/xshaun/covid-19-uk/master/number-of-cas
     figures['total-cases-in-countries'].hideLoading();
     figures['daily-cases-in-countries'].setOption(set_option_for_daily_cases(types.slice(4, 8), v[0], v.slice(5, 9), 'daily cases in each country'));
     figures['daily-cases-in-countries'].hideLoading();
-
 });
 
 $.get('https://raw.githubusercontent.com/xshaun/covid-19-uk/master/cases-identified-in-England.csv').done(function(csv_string) {
@@ -468,7 +467,6 @@ $.get('https://raw.githubusercontent.com/xshaun/covid-19-uk/master/cases-identif
     }
     figures['total-cases-in-england'].setOption(option, theme);
     figures['total-cases-in-england'].hideLoading();
-
 });
 
 $.get('https://raw.githubusercontent.com/xshaun/covid-19-uk/master/cases-identified-locally-in-England.csv').done(function(csv_string) {
