@@ -21,7 +21,8 @@
             <h1>
                 COVID-19 Cases in UK Update
 
-                <a href="https://eps.leeds.ac.uk/computing-research-groups/doc/distributed-systems-services" class="anchor" style="font-size: 0.7rem">
+
+                <a class="anchor" href="https://eps.leeds.ac.uk/computing-research-groups/doc/distributed-systems-services" style="font-size: 0.7rem">
                     <em>@ DSS, University of Leeds</em>
                 </a>
             </h1>
@@ -30,23 +31,23 @@
             <div>
                 <table class="x-uk">
                     <!--
-            dc-nt-uk: daily confirmed - number today - in uk
-            dc-ir-uk: daily confirmed - increase rate - in uk
-            dc-ny-uk: daily confirmed - number yesterday - in uk
-            tc-nt-uk: total confirmed - number today - in uk
-            tr-nt-uk: total recovered - number today - in uk
-            td-nt-uk: total death - number today - in uk
-        -->
+    dc-nt-uk: daily confirmed - number today - in uk
+    dc-ir-uk: daily confirmed - increase rate - in uk
+    dc-ny-uk: daily confirmed - number yesterday - in uk
+    tc-nt-uk: total confirmed - number today - in uk
+    tr-nt-uk: total recovered - number today - in uk
+    td-nt-uk: total death - number today - in uk
+-->
                     <tr>
                         <td>
                             <h5>daily confirmed</h5>
                         </td>
                         <td>
                             <h4>
-                                <code id="dc-nt-uk" class="x-nt">?</code>
-                                <span id="dc-ir-uk" class="x-ir">?%</span>
+                                <code class="x-nt" id="dc-nt-uk">?</code>
+                                <span class="x-ir" id="dc-ir-uk">?%</span>
                             </h4>
-                            <em id="dc-ny-uk" class="x-ny">?(10/03/2020)</em>
+                            <em class="x-ny" id="dc-ny-uk">?(10/03/2020)</em>
                         </td>
                     </tr>
                     <tr>
@@ -55,10 +56,10 @@
                         </td>
                         <td>
                             <h4>
-                                <code id="tc-nt-uk" class="x-nt">?</code>
-                                <span id="tc-ir-uk" class="x-ir">?%</span>
+                                <code class="x-nt" id="tc-nt-uk">?</code>
+                                <span class="x-ir" id="tc-ir-uk">?%</span>
                             </h4>
-                            <em id="tc-ny-uk" class="x-ny">?(10/03/2020)</em>
+                            <em class="x-ny" id="tc-ny-uk">?(10/03/2020)</em>
                         </td>
                     </tr>
                     <tr>
@@ -67,10 +68,10 @@
                         </td>
                         <td>
                             <h4>
-                                <code id="tr-nt-uk" class="x-nt">?</code>
-                                <span id="tr-ir-uk" class="x-ir">?%</span>
+                                <code class="x-nt" id="tr-nt-uk">?</code>
+                                <span class="x-ir" id="tr-ir-uk">?%</span>
                             </h4>
-                            <em id="tr-ny-uk" class="x-ny">?(10/03/2020)</em>
+                            <em class="x-ny" id="tr-ny-uk">?(10/03/2020)</em>
                         </td>
                     </tr>
                     <tr>
@@ -79,17 +80,33 @@
                         </td>
                         <td>
                             <h4>
-                                <code id="td-nt-uk" class="x-nt">?</code>
-                                <span id="td-ir-uk" class="x-ir">?%</span>
+                                <code class="x-nt" id="td-nt-uk">?</code>
+                                <span class="x-ir" id="td-ir-uk">?%</span>
                             </h4>
-                            <em id="td-ny-uk" class="x-ny">?(10/03/2020)</em>
+                            <em class="x-ny" id="td-ny-uk">?(10/03/2020)</em>
                         </td>
                     </tr>
                 </table>
-                <div id="total-cases-in-uk" class="x-f x-fs"></div>
-                <div id="daily-cases-in-uk" class="x-f x-fs"></div>
+                <div class="x-f x-fs" id="total-cases-in-uk"></div>
+                <div class="x-f x-fs" id="daily-cases-in-uk"></div>
             </div>
             <style>
+                        body {
+                            background-color: #fef8ef;
+                        }
+
+                        .markdown-section code {
+                            background-color: transparent;
+                        }
+
+                        .markdown-section p.tip, .markdown-section tr:nth-child(2n) {
+                            background-color: #fdf4e6;
+                        }
+
+                        table.x-uk tr {
+                            border-color: #fae6c6;
+                        }
+
                         div.x-f {
                             height: 380px;
                             display: inline-block;
@@ -115,10 +132,6 @@
                             width: 25%;
                         }
 
-                        table.x-uk tr {
-                            border: 0;
-                        }
-
                         table.x-uk tr td {
                             border: 0;
                         }
@@ -129,7 +142,7 @@
                         }
 
                         table.x-uk tr td code.x-nt {
-                            font-size: 1.5rem;
+                            font-size: 2rem;
                         }
 
                         table.x-uk tr td em.x-ny {
@@ -164,20 +177,20 @@
             <div>
                 <table class="x-uk">
                     <!--
-        nt-e: number today england
-        ir-s: increase rare scoland
-        ny-w: number yesterday Wale
-        -->
+nt-e: number today england
+ir-s: increase rare scoland
+ny-w: number yesterday Wale
+-->
                     <tr>
                         <td>
                             <h5>England</h5>
                         </td>
                         <td>
                             <h4>
-                                <code id="nt-e" class="x-nt">?</code>
-                                <span id="ir-e" class="x-ir">?%</span>
+                                <code class="x-nt" id="nt-e">?</code>
+                                <span class="x-ir" id="ir-e">?%</span>
                             </h4>
-                            <em id="ny-e" class="x-ny">?</em>
+                            <em class="x-ny" id="ny-e">?</em>
                         </td>
                     </tr>
                     <tr>
@@ -186,10 +199,10 @@
                         </td>
                         <td>
                             <h4>
-                                <code id="nt-s" class="x-nt">?</code>
-                                <span id="ir-s" class="x-ir">?%</span>
+                                <code class="x-nt" id="nt-s">?</code>
+                                <span class="x-ir" id="ir-s">?%</span>
                             </h4>
-                            <em id="ny-s" class="x-ny">?</em>
+                            <em class="x-ny" id="ny-s">?</em>
                         </td>
                     </tr>
                     <tr>
@@ -198,10 +211,10 @@
                         </td>
                         <td>
                             <h4>
-                                <code id="nt-w" class="x-nt">?</code>
-                                <span id="ir-w" class="x-ir">?%</span>
+                                <code class="x-nt" id="nt-w">?</code>
+                                <span class="x-ir" id="ir-w">?%</span>
                             </h4>
-                            <em id="ny-w" class="x-ny">?</em>
+                            <em class="x-ny" id="ny-w">?</em>
                         </td>
                     </tr>
                     <tr>
@@ -210,26 +223,27 @@
                         </td>
                         <td>
                             <h4>
-                                <code id="nt-n" class="x-nt">?</code>
-                                <span id="ir-n" class="x-ir">?%</span>
+                                <code class="x-nt" id="nt-n">?</code>
+                                <span class="x-ir" id="ir-n">?%</span>
                             </h4>
-                            <em id="ny-n" class="x-ny">?</em>
+                            <em class="x-ny" id="ny-n">?</em>
                         </td>
                     </tr>
                 </table>
-                <div id="total-cases-in-countries" class="x-f x-fs"></div>
-                <div id="daily-cases-in-countries" class="x-f x-fs"></div>
+                <div class="x-f x-fs" id="total-cases-in-countries"></div>
+                <div class="x-f x-fs" id="daily-cases-in-countries"></div>
             </div>
             <hr>
             <h3>Details in England</h3>
             <div>
-                <div id="total-cases-in-england" class="x-f x-fl"></div>
+                <div class="x-f x-fl" id="total-cases-in-england"></div>
                 <h4>Local Authority in England</h4>
-                <div id="local-cases-in-england" class="x-f x-fl"></div>
+                <div class="x-f x-fl" id="local-cases-in-england"></div>
             </div>
             <hr>
             <p class="tip">
-                The website excludes business purpose, not provides business service. It only helps persons affected by coronavirus make right decisions.
+                The website excludes business purpose, not provides business service. It only helps persons affected by
+                coronavirus make right decisions.
                 Take care of yourselves. The data collected from <a class="anchor" href="https://www.gov.uk/coronavirus">https://www.gov.uk/coronavirus</a>
             </p>
             <!--
