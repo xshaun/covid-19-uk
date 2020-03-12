@@ -179,19 +179,18 @@ function set_option_for_total_cases_in_england(types, dates, values) {
 function set_option_for_local_cases_in_england(types, dates, values) {
     // specify chart configuration item and data
     option = _init(types, dates, 'UTLA in England');
-    option['grid']['top'] = '60%';
-    option['legend']['top'] = '3%';
-    //    grid: {
-    //                top: '25%',
-    //                left: '3%',
-    //                right: '4%',
-    //                bottom: '10%',
-    //                containLabel: true,
-    //            },
+    option['grid']['top'] = '50%';
+    option['legend']['top'] = '7%';
+    option['legend']['height'] = '42%';
+    option['legend']['type'] = 'scroll';
+    option['legend']['orient'] = 'horizonal';
+    option['legend']['formatter'] = function(name) {
+        var b = types.indexOf(name);
+        return name + (-1 != b ? ('(' + _t(values[b]) + ')') : '');
+    }
 
     option['legend']['selected'] = {
         //@todo. hard code
-
         'Barking and Dagenham': false,
         'Barnet': false,
         'Barnsley': false,
@@ -399,7 +398,8 @@ function set_option_for_daily_cases(types, dates, values, t='') {
     return option;
 }
 
-var figures = {}, theme=null;
+var figures = {}
+  , theme = null;
 
 ['total-cases-in-uk', 'daily-cases-in-uk', 'total-cases-in-countries', 'daily-cases-in-countries', 'total-cases-in-england', 'local-cases-in-england'].map(x=>(figures[x] = echarts.init(_id(x), theme)) && figures[x].showLoading());
 
@@ -441,11 +441,11 @@ $.get('https://raw.githubusercontent.com/xshaun/covid-19-uk/master/number-of-cas
     figures['total-cases-in-uk'].setOption(set_option_for_total_cases_in_uk(types.slice(0, 4), v[0]/* date */
     , v.slice(1, 5)), theme);
     figures['total-cases-in-uk'].hideLoading();
-    figures['daily-cases-in-uk'].setOption(set_option_for_daily_cases(types.slice(0, 4), v[0], v.slice(1, 5), 'Daily Cases in UK'), theme);
+    figures['daily-cases-in-uk'].setOption(set_option_for_daily_cases(types.slice(0, 4), v[0], v.slice(1, 5), 'Daily Cases in UK'));
     figures['daily-cases-in-uk'].hideLoading();
 
     // Countries
-    figures['total-cases-in-countries'].setOption(set_option_for_total_cases_in_countries(types.slice(4, 8), v[0], v.slice(5, 9)), theme);
+    figures['total-cases-in-countries'].setOption(set_option_for_total_cases_in_countries(types.slice(4, 8), v[0], v.slice(5, 9)));
     figures['total-cases-in-countries'].hideLoading();
     figures['daily-cases-in-countries'].setOption(set_option_for_daily_cases(types.slice(4, 8), v[0], v.slice(5, 9), 'Daily Cases in Countries'));
     figures['daily-cases-in-countries'].hideLoading();
@@ -465,7 +465,7 @@ $.get('https://raw.githubusercontent.com/xshaun/covid-19-uk/master/cases-identif
         option['grid']['top'] = 170;
         //                    option['grid']['bottom'] = 30;
     }
-    figures['total-cases-in-england'].setOption(option, theme);
+    figures['total-cases-in-england'].setOption(option);
     figures['total-cases-in-england'].hideLoading();
 });
 
@@ -478,11 +478,6 @@ $.get('https://raw.githubusercontent.com/xshaun/covid-19-uk/master/cases-identif
     var types = t[1].slice(1);
 
     // England
-    var option = set_option_for_local_cases_in_england(types, v[0], v.slice(1));
-    if (figures['local-cases-in-england'].getWidth() < 500) {
-        option['grid']['top'] = 1680;
-        option['grid']['bottom'] = 30;
-    }
-    figures['local-cases-in-england'].setOption(option, theme);
+    figures['local-cases-in-england'].setOption(set_option_for_local_cases_in_england(types, v[0], v.slice(1)));
     figures['local-cases-in-england'].hideLoading();
 });
