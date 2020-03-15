@@ -152,7 +152,7 @@ function set_option_for_total_cases_in_england(types, dates, values) {
     // specify chart configuration item and data
     option = _init(types, dates, 'NHS in England');
     option['legend']['selected'] = {
-        'Total': false,
+        // 'Total': false,
         //@todo. hard code
     }
 
