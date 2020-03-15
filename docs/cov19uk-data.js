@@ -186,7 +186,6 @@ function set_option_for_local_cases_in_england(types, dates, values) {
     option['legend']['orient'] = 'horizonal';
     option['legend']['formatter'] = function(name) {
         var b = types.indexOf(name);
-        console.log("--" +name+"   "+ values[b]);
         return name + (-1 != b ? ('(' + _t(values[b]) + ')') : '');
     }
 
