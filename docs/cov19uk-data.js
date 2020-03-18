@@ -114,8 +114,7 @@ function set_option_for_total_cases_in_uk(types, dates, values) {
         //@todo. Hard code
     }
 
-    for (var i = 0; i < 4 /*types.length*/
-    ; i++) {
+    for (var i = 0; i < types.length; i++) {
         option['series'].push({
             name: types[i],
             type: 'line',
@@ -270,7 +269,7 @@ function set_option_for_local_cases_in_england(types, dates, values) {
         'Merton': false,
         'Middlesbrough': false,
         'Milton Keynes': false,
-        'Newcastle upon Tyne': false,
+        'Newcastle upon Tyne': true,
         'Newham': false,
         'Norfolk': false,
         'North East Lincolnshire': false,
@@ -406,7 +405,6 @@ var figures = {}
 //...
 
 $.get('https://raw.githubusercontent.com/xshaun/covid-19-uk/master/number-of-cases-in-UK.csv').done(function(csv_string) {
-
     [t,v] = _pcsv(csv_string)
     if (null == t || null == v)
         return;
@@ -418,36 +416,47 @@ $.get('https://raw.githubusercontent.com/xshaun/covid-19-uk/master/number-of-cas
     var types = t[0].slice(1);
 
     // Update
-    _idv('t', _t(v[0]));
+    _idv('t', _t(v[0])); /* date */
     _idv('dc-nt-uk', _t(v[3]) - _t(v[3], -2));
     _idv('tc-nt-uk', _t(v[3]));
-    _idv('tr-nt-uk', '---');
+    _idv('tr-nt-uk', _t(v[5]));
     _idv('td-nt-uk', _t(v[4]));
 
     _idv('dc-ir-uk', _ir_a(v[3]));
     _idv('tc-ir-uk', _ir_v(v[3], 1));
-    _idv('tr-ir-uk', '---');
+    _idv('tr-ir-uk', _ir_v(v[5]));
     _idv('td-ir-uk', _ir_v(v[4]));
 
     yd = '(' + _t(v[0], -2) + ')';
     _idv('dc-ny-uk', _t(v[3], -2) - _t(v[3], -3) + yd);
     _idv('tc-ny-uk', _t(v[3], -2) + yd);
-    _idv('tr-ny-uk', '---' + yd);
+    _idv('tr-ny-uk', _t(v[5], -2) + yd);
     _idv('td-ny-uk', _t(v[4], -2) + yd);
 
-    ['e', 's', 'w', 'n'].map((x,i)=>_idv('nt-' + x, _t(v[5 + i]))._idv('ir-' + x, _ir_v(v[5 + i]))._idv('ny-' + x, _t(v[5 + i], -2) + yd))
 
     // UK
-    figures['total-cases-in-uk'].setOption(set_option_for_total_cases_in_uk(types.slice(0, 4), v[0]/* date */
-    , v.slice(1, 5)), theme);
+    figures['total-cases-in-uk'].setOption(set_option_for_total_cases_in_uk(types, v[0], v.slice(1)), theme);
     figures['total-cases-in-uk'].hideLoading();
-    figures['daily-cases-in-uk'].setOption(set_option_for_daily_cases(types.slice(0, 4), v[0], v.slice(1, 5), 'Daily Cases in UK'));
+    figures['daily-cases-in-uk'].setOption(set_option_for_daily_cases(types, v[0], v.slice(1), 'Daily Cases in UK'));
     figures['daily-cases-in-uk'].hideLoading();
+});
+
+$.get('https://raw.githubusercontent.com/xshaun/covid-19-uk/master/number-of-cases-in-Countries.csv').done(function(csv_string) {
+
+    [t,v] = _pcsv(csv_string)
+    if (null == t || null == v)
+        return;
+
+    // [ EnglandCases, ScolandCases, WaleCases, NICases, ....]
+    var types = t[0].slice(1);
+
+    yd = '(' + _t(v[0], -2) + ')';
+    ['e', 's', 'w', 'n'].map((x,i)=>_idv('nt-' + x, _t(v[1 + i]))._idv('ir-' + x, _ir_v(v[1 + i]))._idv('ny-' + x, _t(v[1 + i], -2) + yd))
 
     // Countries
-    figures['total-cases-in-countries'].setOption(set_option_for_total_cases_in_countries(types.slice(4, 8), v[0], v.slice(5, 9)));
+    figures['total-cases-in-countries'].setOption(set_option_for_total_cases_in_countries(types, v[0], v.slice(1)));
     figures['total-cases-in-countries'].hideLoading();
-    figures['daily-cases-in-countries'].setOption(set_option_for_daily_cases(types.slice(4, 8), v[0], v.slice(5, 9), 'Daily Cases in Countries'));
+    figures['daily-cases-in-countries'].setOption(set_option_for_daily_cases(types, v[0], v.slice(1), 'Daily Cases in Countries'));
     figures['daily-cases-in-countries'].hideLoading();
 });
 
