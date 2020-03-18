@@ -1,7 +1,11 @@
 # COVID-19-UK
 
-This focuses on tracking the spreading trend of coronavirus in UK in order to better protect ourselves.
+This project focuses on tracking the trend of coronavirus spreading in UK in order to better help people protect themselves.
 
-The website [https://xshaun.github.io/covid-19-uk/](https://xshaun.github.io/covid-19-uk/) provides data visualization.
+The website [https://xshaun.github.io/covid-19-uk/](https://xshaun.github.io/covid-19-uk/) provides data visualization as follows.
 
-##### Welcome everyone to join this. 
+<img src="./asset/screenshot.png" alt="screenshot" style="zoom:15%;" />
+
+Everyone, no matter from academics or industries, can access and (re-)process these data freely, but must follow the policies of [www.gov.uk](www.gov.uk) and local goverments. `Don't be evil !!`
+
+***Welcome everyone to join this project***. 
