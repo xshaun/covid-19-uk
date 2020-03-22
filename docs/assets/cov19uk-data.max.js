@@ -439,8 +439,8 @@ $.get('https://raw.githubusercontent.com/xshaun/covid-19-uk/master/number-of-cas
     for (var i = 1; i < 8; i++) {
         _idv('tw' + i, tt.replace('?1', _t(v[0], -1 * i)) +
         td.replace('?1', _t(v[3], -1 * i) - _t(v[3], -1 * i - 1)).replace('?2', _ir_a(v[3], i - 1)) +
-        td.replace('?1', _t(v[3], -1 * i)).replace('?2', _ir_v(v[3], i)) +
         tr.replace('?1', _ir(_t(v[3], -1 * i) - _t(v[3], -1 * i - 1), _t(v[1], -1 * i) - _t(v[1], -1 * i - 1))) +
+        td.replace('?1', _t(v[3], -1 * i)).replace('?2', _ir_v(v[3], i)) +
         td.replace('?1', _t(v[5], -1 * i)).replace('?2', _ir_v(v[5], i - 1)) +
         td.replace('?1', _t(v[4], -1 * i)).replace('?2', _ir_v(v[4], i - 1)));
     }
