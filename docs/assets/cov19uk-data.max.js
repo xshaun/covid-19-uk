@@ -51,7 +51,7 @@ function _pcsv(c, d=1) {
 }
 
 function _ir(a, b) {
-    return (0 == b ? 0 : ((a - b) / b * 100).toFixed(1)) + "%";
+    return (0 == b ? 0 : ((a - b) / b * 100).toFixed(1)) + "% " + ((a-b)>0?'&uarr;':'&darr;');
 }
 function _ir_v(a, s=0) {
     var l = _l(a);
@@ -427,13 +427,17 @@ $.get('https://raw.githubusercontent.com/xshaun/covid-19-uk/master/number-of-cas
 
     // Update
     var tt = "<td class='x-d'>?1</td>";
-    var td = "<td><code class='x-nt'>?1</code><span class='x-ir'>?2 &uarr;</span></td>";
+    var td = "<td><code class='x-nt'>?1</code><span class='x-ir'>?2</span></td>";
 
     _idv('t', _t(v[0]));
     /* date */
 
     for (var i = 1; i < 8; i++) {
-        _idv('tw' + i, tt.replace('?1', _t(v[0], -1 * i)) + td.replace('?1', _t(v[3], -1 * i) - _t(v[3], -1 * i - 1)).replace('?2', _ir_a(v[3], i - 1)) + td.replace('?1', _t(v[3], -1 * i)).replace('?2', _ir_v(v[3], i)) + td.replace('?1', _t(v[5], -1 * i)).replace('?2', _ir_v(v[5], i - 1)) + td.replace('?1', _t(v[4], -1 * i)).replace('?2', _ir_v(v[4], i - 1)));
+        _idv('tw' + i, tt.replace('?1', _t(v[0], -1 * i)) +
+        td.replace('?1', _t(v[3], -1 * i) - _t(v[3], -1 * i - 1)).replace('?2', _ir_a(v[3], i - 1)) +
+        td.replace('?1', _t(v[3], -1 * i)).replace('?2', _ir_v(v[3], i)) +
+        td.replace('?1', _t(v[5], -1 * i)).replace('?2', _ir_v(v[5], i - 1)) +
+        td.replace('?1', _t(v[4], -1 * i)).replace('?2', _ir_v(v[4], i - 1)));
     }
 
     // UK
@@ -454,7 +458,7 @@ $.get('https://raw.githubusercontent.com/xshaun/covid-19-uk/master/cases-identif
 
     // Update
     var tt = "<td class='x-d'>?1</td>";
-    var td = "<td><code class='x-nt'>?1</code><span class='x-ir'>?2 &uarr;</span></td>";
+    var td = "<td><code class='x-nt'>?1</code><span class='x-ir'>?2</span></td>";
 
     for (var i = 1; i < 8; i++) {
         _idv('cw' + i, tt.replace('?1', _t(v[0], -1 * i)) + td.replace('?1', _t(v[1], -1 * i)).replace('?2', _ir_v(v[1], i - 1)) + td.replace('?1', _t(v[2], -1 * i)).replace('?2', _ir_v(v[2], i - 1)) + td.replace('?1', _t(v[3], -1 * i)).replace('?2', _ir_v(v[3], i - 1)) + td.replace('?1', _t(v[4], -1 * i)).replace('?2', _ir_v(v[4], i - 1)));
