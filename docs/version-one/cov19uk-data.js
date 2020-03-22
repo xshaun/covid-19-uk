@@ -443,7 +443,7 @@ $.get('https://raw.githubusercontent.com/xshaun/covid-19-uk/master/number-of-cas
     figures['daily-cases-in-uk'].hideLoading();
 });
 
-$.get('https://raw.githubusercontent.com/xshaun/covid-19-uk/master/number-of-cases-in-Countries.csv').done(function(csv_string) {
+$.get('https://raw.githubusercontent.com/xshaun/covid-19-uk/master/cases-identified-in-Counties.csv').done(function(csv_string) {
 
     [t,v] = _pcsv(csv_string)
     if (null == t || null == v)
