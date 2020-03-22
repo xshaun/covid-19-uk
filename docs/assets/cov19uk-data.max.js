@@ -431,7 +431,7 @@ $.get('https://raw.githubusercontent.com/xshaun/covid-19-uk/master/number-of-cas
     // Update
     var tt = "<td class='x-d'>?1</td>";
     var td = "<td><code class='x-nt'>?1</code><span class='x-ir'>?2</span></td>";
-    var tr = "<td><span class='x-ir'>?1</span><span class='x-ir'>?2</span></td>";
+    var tr = "<td><span class='x-ir'>?1</span> | <span class='x-ir'>?2</span></td>";
 
     _idv('t', _t(v[0]));
     /* date */
