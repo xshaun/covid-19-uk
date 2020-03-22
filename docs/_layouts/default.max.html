@@ -126,19 +126,18 @@ endif %}
   </div>
 </div>
 {% if site.gitalk %}
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script async src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></scriptasync>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 <div id="gitalk-container"></div>
-<script async type="text/javascript">
+<script type="text/javascript">
 		const gitalk=new Gitalk({clientID:'1817bfb2de39dab02d07',clientSecret:'c284cb5de0e648b70c9088989ae02bb66d59620a',repo:'notebook',owner:'xshaun',admin:['xshaun'],id:location.pathname,distractionFreeMode:false}) gitalk.render('gitalk-container')
 </script>
 {% endif %}
 <script defer src="{{ '/assets/cov19uk-data.js' | relative_url }}"></script>
 {% if site.google_analytics %}
 <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
-<script async>
+<script>
 		window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);} gtag('js',new Date());gtag('config','{{ site.google_analytics }}');
-
 </script>
 {% endif %}
 </body>
