@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://cdn.jsdelivr.net/">
   <link rel="preconnect" href="https://www.google-analytics.com">
   <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="preconnect" href="https://ajax.googleapis.com">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="description" content="{{ site.title | default: site.github.repository_name }}">
@@ -17,7 +18,8 @@
   <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}"
         media="screen" type="text/css">
   <link rel="stylesheet" href="{{ '/assets/css/print.css' | relative_url }}" media="print" type="text/css">
-  <script async src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<!--  <script async src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>-->
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/echarts@4.6.0/dist/echarts.min.js"></script>
   <!--[if lt IE 9]>
   <script async src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script> <![endif]-->{% seo %}
