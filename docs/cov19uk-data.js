@@ -21,6 +21,7 @@ function _pcsv(c, d=1) {
         if (s instanceof Array) {
             var m = 0;
             for (var i = 0; i < d && i < s.length; i++) {
+                if (0 == s[i].search(/^\s*$/i)) continue;
                 t[i] = s[i].split(/\s*,\s*/);
                 m = t[i].length < m ? m : t[i].length;
             }
@@ -30,6 +31,7 @@ function _pcsv(c, d=1) {
             for (var i = 0; i < m; i++)
                 v[i] = [];
             for (var i = d; i < s.length; i++) {
+                if (0 == s[i].search(/^\s*$/i)) continue;
                 w = s[i].split(/\s*,\s*/).map(x=>r.test(x) ? parseFloat(x) : x);
                 while (m - w.length > 0)
                     w[w.length] = '';
