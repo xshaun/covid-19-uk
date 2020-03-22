@@ -51,15 +51,18 @@ function _pcsv(c, d=1) {
 }
 
 function _ir(a, b) {
-    return (0 == b ? 0 : ((a - b) / b * 100).toFixed(1)) + "% " + ((a-b)>0?'&uarr;':'&darr;');
+    return (0 == b ? 0 : (a / b * 100).toFixed(1)) + "% ";
+}
+function _ir_m(a, b) {
+    return _ir((a-b), b) + ((a-b)>0?'&uarr;':'&darr;');
 }
 function _ir_v(a, s=0) {
     var l = _l(a);
-    return (l < s + 1) ? 0 : _ir(a[l - s], a[l - s - 1]);
+    return (l < s + 1) ? 0 : _ir_m(a[l - s], a[l - s - 1]);
 }
 function _ir_a(a, s=0) {
     var l = _l(a);
-    return (l < s + 2) ? 0 : _ir((a[l - s] - a[l - s - 1]), (a[l - s - 1] - a[l - s - 2]));
+    return (l < s + 2) ? 0 : _ir_m((a[l - s] - a[l - s - 1]), (a[l - s - 1] - a[l - s - 2]));
 }
 
 function _init(types, dates, t='') {
@@ -428,6 +431,7 @@ $.get('https://raw.githubusercontent.com/xshaun/covid-19-uk/master/number-of-cas
     // Update
     var tt = "<td class='x-d'>?1</td>";
     var td = "<td><code class='x-nt'>?1</code><span class='x-ir'>?2</span></td>";
+    var tr = "<td><code class='x-nt'>?1</code></td>";
 
     _idv('t', _t(v[0]));
     /* date */
@@ -436,6 +440,7 @@ $.get('https://raw.githubusercontent.com/xshaun/covid-19-uk/master/number-of-cas
         _idv('tw' + i, tt.replace('?1', _t(v[0], -1 * i)) +
         td.replace('?1', _t(v[3], -1 * i) - _t(v[3], -1 * i - 1)).replace('?2', _ir_a(v[3], i - 1)) +
         td.replace('?1', _t(v[3], -1 * i)).replace('?2', _ir_v(v[3], i)) +
+        tr.replace('?1', _ir(_t(v[3], -1 * i) - _t(v[3], -1 * i - 1), _t(v[1], -1 * i) - _t(v[1], -1 * i - 1))) +
         td.replace('?1', _t(v[5], -1 * i)).replace('?2', _ir_v(v[5], i - 1)) +
         td.replace('?1', _t(v[4], -1 * i)).replace('?2', _ir_v(v[4], i - 1)));
     }
