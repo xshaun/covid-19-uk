@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>COV-19-UK</title>
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"/>
+    <meta content="Description" name="description">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" name="viewport">
+    <link href="//unpkg.com/docsify/lib/themes/vue.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@4.6.0/dist/echarts.min.js"></script>
+</head>
+<body class="ready sticky">
+<main>
+    <section>
+        <article class="markdown-section" id="main">
+            <h1>
+                COVID-19 CASES in UK UPDATE
+
+                <span style="font-size: 1.3rem; font-weight: normal; margin: 0 0.5rem;">
+                    as of <span id="t">today </span>
+                </span>
+                <a class="anchor" href="https://eps.leeds.ac.uk/computing-research-groups/doc/distributed-systems-services" style="font-size: 0.7rem; font-weight: 400;">
+                    <em>@ DSS, University of Leeds</em>
+                </a>
+            </h1>
+            <hr style="border-top: 3px double #8c8b8b;">
+            <h3>in UK</h3>
+            <div>
+                <table class="x-uk">
+                    <tr>
+                        <td>
+                            <h5>Daily Confirmed</h5>
+                        </td>
+                        <td>
+                            <h4>
+                                <code class="x-nt" id="dc-nt-uk">?</code>
+                                <span class="x-ir" id="dc-ir-uk">?%</span>
+                            </h4>
+                            <em class="x-ny" id="dc-ny-uk">?(10/03/2020)</em>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h5>Total Confirmed</h5>
+                        </td>
+                        <td>
+                            <h4>
+                                <code class="x-nt" id="tc-nt-uk">?</code>
+                                <span class="x-ir" id="tc-ir-uk">?%</span>
+                            </h4>
+                            <em class="x-ny" id="tc-ny-uk">?(10/03/2020)</em>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h5>Total Recovered</h5>
+                        </td>
+                        <td>
+                            <h4>
+                                <code class="x-nt" id="tr-nt-uk">?</code>
+                                <span class="x-ir" id="tr-ir-uk">?%</span>
+                            </h4>
+                            <em class="x-ny" id="tr-ny-uk">?(10/03/2020)</em>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h5>Total Deaths</h5>
+                        </td>
+                        <td>
+                            <h4>
+                                <code class="x-nt" id="td-nt-uk">?</code>
+                                <span class="x-ir" id="td-ir-uk">?%</span>
+                            </h4>
+                            <em class="x-ny" id="td-ny-uk">?(10/03/2020)</em>
+                        </td>
+                    </tr>
+                </table>
+                <div class="x-f x-fs" id="total-cases-in-uk"></div>
+                <div class="x-f x-fs" id="daily-cases-in-uk"></div>
+            </div>
+            <style>
+                        body {
+                            background-color: #fef8ef
+                        }
+
+                        .markdown-section code {
+                            background-color: transparent
+                        }
+
+                        .markdown-section p.tip, .markdown-section tr:nth-child(2n) {
+                            background-color: #fdf4e6
+                        }
+
+                        table.x-uk tr td, table.x-uk tr {
+                            border-color: #fae6c6
+                        }
+
+                        div.x-f {
+                            height: 380px;
+                            display: inline-block;
+                            margin: 0 auto
+                        }
+
+                        div.x-fs {
+                            width: 34%
+                        }
+
+                        div.x-fl {
+                            width: 90%
+                        }
+
+                        table.x-uk {
+                            text-align: center;
+                            display: inline-block;
+                            width: 28%;
+                            margin-right:2%;
+                        }
+
+                        table.x-uk tr td h4 {
+                            white-space: nowrap;
+                            overflow: hidden;
+                        }
+
+                        table.x-uk tr td h4, table.x-uk tr td h5 {
+                            display: inline-block;
+                            margin: 1rem 0
+                        }
+
+                        table.x-uk tr td code.x-nt {
+                            font-size: 2rem
+                        }
+
+                        table.x-uk tr td em.x-ny {
+                            display: inline-block
+                        }
+
+                        table.x-uk tr td span.x-ir {
+                            color: #e63710;
+                        }
+
+                        @media screen and (max-width: 768px) {
+                            table.x-uk {
+                                width:100%
+                            }
+
+                            div.x-f {
+                                width: 100%
+                            }
+
+                            div.x-fl {
+                                height: 430px
+                            }
+                        }
+                    </style>
+            <hr>
+            <h3>in Countries</h3>
+            <div>
+                <table class="x-uk">
+                    <tr>
+                        <td>
+                            <h5>England</h5>
+                        </td>
+                        <td>
+                            <h4>
+                                <code class="x-nt" id="nt-e">?</code>
+                                <span class="x-ir" id="ir-e">?%</span>
+                            </h4>
+                            <em class="x-ny" id="ny-e">?</em>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h5>Scoland</h5>
+                        </td>
+                        <td>
+                            <h4>
+                                <code class="x-nt" id="nt-s">?</code>
+                                <span class="x-ir" id="ir-s">?%</span>
+                            </h4>
+                            <em class="x-ny" id="ny-s">?</em>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h5>Wale</h5>
+                        </td>
+                        <td>
+                            <h4>
+                                <code class="x-nt" id="nt-w">?</code>
+                                <span class="x-ir" id="ir-w">?%</span>
+                            </h4>
+                            <em class="x-ny" id="ny-w">?</em>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h5>N. Ireland</h5>
+                        </td>
+                        <td>
+                            <h4>
+                                <code class="x-nt" id="nt-n">?</code>
+                                <span class="x-ir" id="ir-n">?%</span>
+                            </h4>
+                            <em class="x-ny" id="ny-n">?</em>
+                        </td>
+                    </tr>
+                </table>
+                <div class="x-f x-fs" id="total-cases-in-countries"></div>
+                <div class="x-f x-fs" id="daily-cases-in-countries"></div>
+            </div>
+            <hr>
+            <h3>in England</h3>
+            <div>
+                <h4>NHS Region</h4>
+                <div class="x-f x-fl" id="total-cases-in-england"></div>
+                <h4>Local Authority</h4>
+                <div class="x-f x-fl" id="local-cases-in-england"></div>
+            </div>
+            <hr>
+            <p class="tip">
+                The website excludes business purpose, not provides business service. It only helps persons affected by coronavirus make right decisions. Take care of yourselves. The data collected from <a class="anchor" href="https://www.gov.uk/coronavirus">https://www.gov.uk/coronavirus</a>
+                .
+                <br>
+            </p>
+        </article>
+    </section>
+</main>
+<script src="./cov19uk-data.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-151333937-1"></script>
+<script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+            gtag('config', 'UA-151333937-1');
+        </script>
+</body>
+</html>

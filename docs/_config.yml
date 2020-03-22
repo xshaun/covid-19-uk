@@ -1,1 +1,18 @@
-theme: jekyll-theme-cayman
+theme: jekyll-theme-architect
+
+title: [COVID-19 in UK ]
+description: [Track update on Covid-19 spreading trend.]
+
+show_downloads: false
+google_analytics: [UA-151333937-1]
+gitalk: false
+
+github:
+    is_project_page: true
+    is_user_page: false
+
+support_mathjax: false
+show_gocontent: false
+show_gotop: true
+title_zh: [新冠肺炎2019UK]
+
