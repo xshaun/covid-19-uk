@@ -54,7 +54,7 @@ function _ir(a, b) {
     return (0 == b ? 0 : (a / b * 100).toFixed(1)) + "% ";
 }
 function _ir_m(a, b) {
-    return _ir((a-b), b) + ((a-b)>0?'&uarr;':'&darr;');
+    return _ir((a-b), b) + ((a-b)>=0?'&uarr;':'&darr;');
 }
 function _ir_v(a, s=0) {
     var l = _l(a);
@@ -436,8 +436,8 @@ $.get('https://raw.githubusercontent.com/xshaun/covid-19-uk/master/number-of-cas
     _idv('t', _t(v[0]));
     /* date */
 
-    for (var i = 1; i < 8; i++) {
-        _idv('tw' + i, tt.replace('?1', _t(v[0], -1 * i)) +
+    for (var i = 1; i <= 12; i++) {
+        _idv('tw' + i, tt.replace('?1', _t(v[0], -1 * i).slice(5)/*remove hour*/) +
         td.replace('?1', _t(v[3], -1 * i) - _t(v[3], -1 * i - 1)).replace('?2', _ir_a(v[3], i - 1)) +
         tr.replace('?1', _t(v[1], -1 * i) - _t(v[1], -1 * i - 1)).replace('?2', _ir(_t(v[3], -1 * i) - _t(v[3], -1 * i - 1), _t(v[1], -1 * i) - _t(v[1], -1 * i - 1))) +
         td.replace('?1', _t(v[3], -1 * i)).replace('?2', _ir_v(v[3], i)) +
